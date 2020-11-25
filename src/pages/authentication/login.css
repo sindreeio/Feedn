@@ -27,14 +27,17 @@
 }
 .input-field{
     width: fit-content;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .buttonDiv{
-    display: flex;
+    width: 250px;    
     justify-content: space-between;
-    width: fit-content;
+    display: flex;
+    margin-top: 20px;
+
 }
 .limitButton{
+    padding-left: 10px;
     width: 50px;
 }
