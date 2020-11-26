@@ -4,36 +4,58 @@ import './login.css';
 import MaterialDesignFilledButton from '../../components/buttons/materialDesignFilledButton';
 import MaterialDesignField from '../../components/inputfields/MaterialDesignField';
 import {Redirect} from 'react-router-dom';
-import { render } from '@testing-library/react';
+import {firebaseAuth} from '../../database/FirebaseConfig.js';
+
 
 
    
 
 function Login(){
-    const [doRedirect, setRedirect] = useState(false)
+    const [doRedirectToRegistrer, setRedirectToRegistrer] = useState(false);
+    const [doRedirectToFeed, setRedirectToFeed]= useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState(null);
+    useEffect(()=>{
+        firebaseAuth.onAuthStateChanged(function(user) {
+            if (user) {
+                setRedirectToFeed(true);
+            } else {
+            }
+        })
+    })
+
+    const submit = () =>{
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+        .catch(function(err) {
+            setError(err);
+        })
+    }
 
     const changeRedirectToRegister = () =>{
-        setRedirect(true);
+        setRedirectToRegistrer(true);
     }
 
 
     return(
         
         <div className="Container">
-            {doRedirect ? <Redirect to="/registrer"/> : null}
+            {doRedirectToRegistrer ? <Redirect to="/registrer"/> : null}
+            {doRedirectToFeed ? <Redirect to="/feed"/> : null}
             <div className="Content">
                 <div className="Logo">Feedn</div>
                 <div className="input-field">
-                    <MaterialDesignField label="Brukernavn" type="text" id="email"/>
+                    <MaterialDesignField setFunction={setEmail} label="Brukernavn" type="text" id="email"/>
                 </div>
                 <div className="input-field">
-                    <MaterialDesignField label="Passord" type="password" id="password"/>
+                    <MaterialDesignField setFunction={setPassword} label="Passord" type="password" id="password"/>
                 </div>
                 
                 <div className="buttonDiv">
                         <MaterialDesignFilledButton action={changeRedirectToRegister} buttonText="Registrer"/>
-                        <MaterialDesignFilledButton buttonText="Logg inn"/>
+                        <MaterialDesignFilledButton action={submit} buttonText="Logg inn"/>
                 </div>
+                {error && <p className="textColor">{error.message}</p>}
             </div>
         </div>
     )

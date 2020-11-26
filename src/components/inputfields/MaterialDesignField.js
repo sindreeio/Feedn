@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {MDCTextField} from '@material/textfield';
 
-//needs props label, , type which is the input field type and function which is where the input will be sent to
+//needs props label, , type which is the input field type and setFunction which is where the input will be sent to
 function MaterialDesignField(props){
     var textField = null; 
     useEffect(()=> {

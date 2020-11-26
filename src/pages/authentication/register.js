@@ -57,7 +57,7 @@ const submit = () =>{
                 <div className="input-field">
                     <MaterialDesignField setFunction={setRepeat_password} label="Gjenta passord" type="password" id="repeat_password"/>
                 </div>
-                <p><input onClick={changeAgrees} type="checkbox"></input>I agree to the <a href="https://www.termsandconditionsgenerator.com/live.php?token=WFSV17m1AHu9HWbfOz06w6GJ5AvnzEAk">Terms and conditions</a> and the <a href="https://www.privacypolicygenerator.info/live.php?token=dj04dy1Y6VDva3NkWl9HJOFTtGwA17W1">Privacy policy</a></p>
+                <p><input onClick={changeAgrees} type="checkbox"></input>I agree to the <a href="https://www.termsandconditionsgenerator.com/live.php?token=3qtTOFqtNDpU17UhDMwk0zHszKepHnPr">Terms and conditions</a> and the <a href="https://www.privacypolicygenerator.info/live.php?token=IXYpcEVJkQTMbf17xHO4R3BcEP94Rk3y">Privacy policy</a></p>
                 {error && <p className="textColor">{error.message}</p>}
                 <MaterialDesignFilledButton action={submit} buttonText="Registrer"/>
                 <div>Har du allerede bruker?<Link to='/'>Logg inn</Link></div>
