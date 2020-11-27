@@ -17,19 +17,28 @@ function Login(){
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     useEffect(()=>{
-        firebaseAuth.onAuthStateChanged(function(user) {
-            if (user) {
+        firebaseAuth.onAuthStateChanged(function(user){
+            if(user){
                 setRedirectToFeed(true);
-            } else {
+            }
+            else{
+                setRedirectToFeed(false);
             }
         })
     })
 
+
     const submit = () =>{
+        console.log("submit")
         firebaseAuth.signInWithEmailAndPassword(email, password)
-        .catch(function(err) {
-            setError(err);
+        .then((user) => {
+            console.log(user);
+            console.log("user created");
+            setRedirectToFeed(true);
         })
+        .catch((error) => {
+            setError(error);
+        });
     }
 
     const changeRedirectToRegister = () =>{

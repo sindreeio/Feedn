@@ -5,6 +5,7 @@ import MaterialDesignFilledButton from '../../components/buttons/materialDesignF
 import MaterialDesignField from '../../components/inputfields/MaterialDesignField';
 import {Link} from 'react-router-dom';
 import {firebaseAuth} from '../../database/FirebaseConfig.js';
+import {Redirect} from 'react-router-dom';
 
 
 function Register(){
@@ -13,11 +14,19 @@ const [email,setEmail] = useState("");
 const [password, setPassword] = useState("");
 const [repeat_password, setRepeat_password] = useState("");
 const [agrees, setAgrees] = useState(false);
+const [doRedirectToFeed, setRedirectToFeed] = useState(false);
 
-useEffect(() => {
-    console.log(agrees);
+ useEffect(()=>{
+    firebaseAuth.onAuthStateChanged(function(user){
+        if(user){
+            setRedirectToFeed(true);
+        }
+        else{
+            setRedirectToFeed(false);
+        }
+    })
+    console.log(firebaseAuth.is)
 })
-
 const changeAgrees = () =>{
     if (agrees){
         setAgrees(false);
@@ -32,9 +41,11 @@ const submit = () =>{
         setError({message: "Passordene er ikke like"});
     }else{
     if(agrees){
+        console.log("agrees")
         firebaseAuth.createUserWithEmailAndPassword(email, password)
-        .catch(function(err) {
-            setError(err);
+        .catch((error) => {
+            console.log("error")
+            setError(error);
         });
     }
     else{
@@ -44,8 +55,9 @@ const submit = () =>{
     };
 }
     return(
-        
+
         <div className="Container">
+            {doRedirectToFeed ? <Redirect to="/feed"/> : null}
             <div className="Content">
                 <div className="Logo">Feedn</div>
                 <div className="input-field">
