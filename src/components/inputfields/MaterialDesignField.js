@@ -9,11 +9,11 @@ function MaterialDesignField(props){
     })
 
     return(
-        <label class="mdc-text-field mdc-text-field--filled" id={props.id}>
-        <span class="mdc-text-field__ripple"></span>
-        <span class="mdc-floating-label" id="my-label-id">{props.label}</span>
-        <input class="mdc-text-field__input" onChange={(text) => props.setFunction(text.target.value)} type={props.type} aria-labelledby="my-label-id"/>
-        <span class="mdc-line-ripple"></span>
+        <label className="mdc-text-field mdc-text-field--filled" id={props.id}>
+        <span className="mdc-text-field__ripple"></span>
+        <span className="mdc-floating-label" id="my-label-id">{props.label}</span>
+        <input className="mdc-text-field__input" onChange={(text) => props.setFunction(text.target.value)} type={props.type} aria-labelledby="my-label-id"/>
+        <span className="mdc-line-ripple"></span>
     </label>
     )
     }
