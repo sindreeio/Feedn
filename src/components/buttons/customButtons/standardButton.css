@@ -1,0 +1,17 @@
+
+.standardButton{
+    width: 100%;
+    background-color: #eeeeee;
+    color: #1ABDA5;
+    text-align: center;
+    height: 40px;
+    cursor: pointer;
+    padding-top: 17px;
+    border-radius: 5px;
+    margin-bottom: 2px;
+}
+
+.standardButton:hover{
+    background-color:#1ABDA5 ;
+    color: #FFFFFF;
+}
