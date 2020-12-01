@@ -3,7 +3,7 @@ import '../../index.css';
 import './login.css';
 import MaterialDesignFilledButton from '../../components/buttons/materialDesignFilledButton';
 import MaterialDesignField from '../../components/inputfields/MaterialDesignField';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import {firebaseAuth} from '../../database/FirebaseConfig.js';
 
 
@@ -11,7 +11,6 @@ import {firebaseAuth} from '../../database/FirebaseConfig.js';
    
 
 function Login(){
-    const [doRedirectToRegistrer, setRedirectToRegistrer] = useState(false);
     const [doRedirectToFeed, setRedirectToFeed]= useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -43,16 +42,10 @@ function Login(){
         });
     }
 
-    const changeRedirectToRegister = () =>{
-        setRedirectToRegistrer(true);
-    }
-
-
     return(
         
         <div className="Container">
-            {doRedirectToRegistrer ? <Redirect to="/registrer"/> : null}
-            {doRedirectToFeed ? <Redirect to="/feed"/> : null}
+            {doRedirectToFeed ? <Redirect to="/feeds"/> : null}
             <div className="Content">
                 <div className="Logo">Feedn</div>
                 <div className="input-field">
@@ -63,7 +56,9 @@ function Login(){
                 </div>
                 
                 <div className="buttonDiv">
-                        <MaterialDesignFilledButton action={changeRedirectToRegister} buttonText="Registrer"/>
+                        <Link to='/registrer'>
+                            <MaterialDesignFilledButton buttonText="Registrer"/>
+                        </Link>
                         <MaterialDesignFilledButton action={submit} buttonText="Logg inn"/>
                 </div>
                 {error && <p className="textColor">{error.message}</p>}
