@@ -4,7 +4,7 @@ import './login.css';
 import MaterialDesignFilledButton from '../../components/buttons/materialDesignFilledButton';
 import MaterialDesignField from '../../components/inputfields/MaterialDesignField';
 import {Link} from 'react-router-dom';
-import {firebaseAuth} from '../../database/FirebaseConfig.js';
+import {firebaseAuth, db} from '../../database/FirebaseConfig.js';
 import {Redirect} from 'react-router-dom';
 
 
@@ -15,6 +15,8 @@ const [password, setPassword] = useState("");
 const [repeat_password, setRepeat_password] = useState("");
 const [agrees, setAgrees] = useState(false);
 const [doRedirectToFeed, setRedirectToFeed] = useState(false);
+const [firstName, setFirstName] = useState('');
+const [lastName, setLastName] = useState('');
 
  useEffect(()=>{
     firebaseAuth.onAuthStateChanged(function(user){
@@ -42,7 +44,12 @@ const submit = () =>{
     }else{
     if(agrees){
         console.log("agrees")
-        firebaseAuth.createUserWithEmailAndPassword(email, password)
+        firebaseAuth.createUserWithEmailAndPassword(email, password).then(
+            function(user){
+                console.log(user);
+                db.collection('users').doc(user.user.uid).set({first_name: firstName, last_name: lastName, member_of: [], profile_img_path:""});
+            }
+        )
         .catch((error) => {
             console.log("error")
             setError(error);
@@ -62,6 +69,12 @@ const submit = () =>{
                 <div className="Logo">Feedn</div>
                 <div className="input-field">
                     <MaterialDesignField setFunction={setEmail} label="Epost" type="text" id="email"/>
+                </div>
+                <div className="input-field">
+                    <MaterialDesignField setFunction={setFirstName} label="Fornavn" type="text" id="firstName"/>
+                </div>
+                <div className="input-field">
+                    <MaterialDesignField setFunction={setLastName} label="Etternavn" type="text" id="LastName"/>
                 </div>
                 <div className="input-field">
                     <MaterialDesignField setFunction={setPassword} label="Passord" type="password" id="passord"/>
