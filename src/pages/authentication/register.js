@@ -64,7 +64,7 @@ const submit = () =>{
     return(
 
         <div className="Container">
-            {doRedirectToFeed ? <Redirect to="/feed"/> : null}
+            {doRedirectToFeed ? <Redirect to="/feeds"/> : null}
             <div className="Content">
                 <div className="Logo">Feedn</div>
                 <div className="input-field">
