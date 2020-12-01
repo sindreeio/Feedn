@@ -1,15 +1,12 @@
 import React from 'react';
 import './navbar.css';
-import firebase from "firebase";
+import signOut from '../../functions/authenication/logout.js';
 import StandardButton from '../buttons/customButtons/standardButton.js'
+import { Link } from 'react-router-dom';
 
 
 function ProfileMenu(props){
 
-   const signOut = () => {
-        firebase.auth().signOut();
-          
-    }
 
     return(
         <div className="align_right_container">
@@ -17,7 +14,9 @@ function ProfileMenu(props){
                     <div className="center_content_container">
                         <img className="profile_img_big" src={props.profilePicture}></img>
                     </div>
-                    <StandardButton text="Bytt feed"/>
+                    <Link style={{ textDecoration: 'none' }} to="/feeds">
+                        <StandardButton text="Bytt feed"/>
+                    </Link>
                     <StandardButton text="Log ut" action={signOut}/>
                 </div>
             </div>

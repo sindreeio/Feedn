@@ -9,6 +9,8 @@
     padding-top: 17px;
     border-radius: 5px;
     margin-bottom: 2px;
+    text-decoration: none;
+    
 }
 
 .standardButton:hover{
