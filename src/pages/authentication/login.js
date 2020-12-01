@@ -17,6 +17,8 @@ function Login(){
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     useEffect(()=>{
+        console.log(email);
+        console.log(password)
         firebaseAuth.onAuthStateChanged(function(user){
             if(user){
                 setRedirectToFeed(true);
