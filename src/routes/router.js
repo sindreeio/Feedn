@@ -4,6 +4,7 @@ import Login from '../pages/authentication/login.js';
 import Register from '../pages/authentication/register.js';
 import Feed from '../pages/feed/feed.js';
 import FeedOverview from '../pages/feedsOverview/feedsOverview.js';
+import CreateFeed from '../pages/feedsOverview/createFeed.js';
 
 function Router(){
     return(
@@ -20,6 +21,9 @@ function Router(){
                 </Route>
                 <Route exact path="/feeds">
                     <FeedOverview/>
+                </Route>
+                <Route exact path="/createFeed">
+                    <CreateFeed/>
                 </Route>
             </Switch>
         </BrowserRouter>

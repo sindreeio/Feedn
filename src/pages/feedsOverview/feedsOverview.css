@@ -31,8 +31,18 @@
 .card_div{
     width: 170px;
     height: 100px;
-    margin-top: 20px;
+    margin-top: 50px;
 
+}
+.group_image{
+    width: 150px;
+    margin-top: 60px  }
+
+.mar{
+    margin-top: 60px;
+}
+.button_width{
+    width: 200px;
 }
 
 @media screen and (max-width: 600px) {
@@ -43,3 +53,4 @@
      
     }
   }
+
