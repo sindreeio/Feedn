@@ -5,3 +5,17 @@
 .margin{
     margin-top:30px ;
 }
+
+.groupname{
+    text-align: center;
+    font-size: 20px;
+}
+
+.code{
+    text-align: center;
+}
+
+.remove_link_style{
+    text-decoration: none;
+    color: black;
+}
