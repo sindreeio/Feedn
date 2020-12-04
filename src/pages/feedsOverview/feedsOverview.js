@@ -55,9 +55,7 @@ function FeedOverview(){
                     </div>
                 </div>
             </div>
-            <Link to="/createFeed">
-                <MaterialDesignFloatingButtonText text="Opprett ny feed"/>
-            </Link>
+                <MaterialDesignFloatingButtonText to="/createFeed" text="Opprett ny feed"/>
         </div>
     )
 }
