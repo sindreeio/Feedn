@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Btn from '../../components/buttons/materialDesignFilledButton';
 import {db, firebaseAuth, storage} from '../../database/FirebaseConfig';
-import {Redirect} from 'react-router-dom';
+import {Redirect, useHistory} from 'react-router-dom';
 import './navbar.css';
 import empty_user from '../../media/img/empty_user.png';
 import ProfileMenu from './ProfileMenu';
@@ -16,7 +16,6 @@ function Navbar(props){
         firebaseAuth.onAuthStateChanged(function(user) {
             if (user) {
                 setUser(user)
-                console.log(user)
             } else {
                 setRedirectToLogin(true);
             }
@@ -26,14 +25,11 @@ function Navbar(props){
         if(user){
         const snapshot = db.collection("users").doc(user.uid).onSnapshot(
             function(doc){
-                console.log(doc.data())
                 imgPath = doc.data().profile_img_path;
-                console.log(imgPath)
             }
         )
         if(!((imgPath === ""))){
             //storage logic here
-            console.log("nei")
         }
         }
     })
@@ -48,14 +44,16 @@ function Navbar(props){
         }
     }
     
+    let history = useHistory();
+
     return(
         <div>
             <div className="nav-container">
                 {doRedirectToLogin ? <Redirect to="/"/> : null}
-                <div className="back_icon">
-                <span class="material-icons">
-                    keyboard_arrow_left
-                </span>
+                <div className="back_icon" onClick={() => history.goBack()}>
+                    <span class="material-icons">
+                        keyboard_arrow_left
+                    </span>
                 </div>
                 <div className="logo">Feedn</div>
                 <div>
