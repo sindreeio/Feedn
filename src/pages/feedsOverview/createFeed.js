@@ -9,7 +9,9 @@ import {db, firebaseAuth, storage} from '../../database/FirebaseConfig';
 import {Link} from 'react-router-dom';
 
 
-
+function uploadImage(){
+    
+}
 
 
 
@@ -23,12 +25,12 @@ function CreateFeed(){
     },[])
 
    const submit = () =>{
+       if(!(name === "")){        
         db.collection("feeds").add({name: name, members:[userID], code: Date.now()})
         .then(function(docRef) {
             console.log("Document written with ID: ", docRef.id);
             const ref = db.collection("users").doc(userID);
             db.runTransaction(transaction => {
-                // This code may get re-run multiple times if there are conflicts.
                 return transaction.get(ref).then(doc => {
                     if (!doc.data().member_of) {
                         transaction.set({
@@ -45,6 +47,7 @@ function CreateFeed(){
         .catch(function(error) {
             console.error("Error adding document: ", error);
         });
+    }
     }
 
 
