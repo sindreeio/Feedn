@@ -5,6 +5,8 @@ import {Redirect, useHistory} from 'react-router-dom';
 import './navbar.css';
 import empty_user from '../../media/img/empty_user.png';
 import ProfileMenu from './ProfileMenu';
+import logo from '../../media/img/logo.png';
+
 
 
 function Navbar(props){
@@ -55,7 +57,8 @@ function Navbar(props){
                         keyboard_arrow_left
                     </span>
                 </div>
-                <div className="logo">Feedn</div>
+                <div className="flex">
+                    <img className="feedn_logo" src={logo}></img><div className="logo">Feedn</div></div>
                 <div>
                     <img onClick={handleImageClick} className="profile_img" src={profilePicture}></img>
 

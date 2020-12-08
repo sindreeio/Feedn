@@ -4,14 +4,15 @@
     height: 50px;
     width: 100%;
     position: fixed;
-    background-color: #0bdebe;
+    background-color: white;
     font-family: 'Exo', sans-serif;
     justify-content: space-between;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 .logo{
-    color: white;
+    color: #0bdebe;
     text-align: center;
     font-weight: bold;
     display: block;
@@ -24,8 +25,15 @@
     width: 30px;
     height: 30px;
     padding-right: 10px;
-    padding-top: 10px;
 }
+
+.feedn_logo{
+    width: 30px;
+    height: 30px;
+    padding-right: 10px;
+    padding-top: 4px;
+}
+
 
 .profile_menu{
     width: 200px;
@@ -68,6 +76,9 @@
 
 .back_icon{
     margin-left: 10px;
-    margin-top: 13px;
     cursor: pointer;
+}
+
+.flex{
+    display: flex;
 }
