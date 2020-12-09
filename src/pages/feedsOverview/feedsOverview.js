@@ -6,19 +6,7 @@ import { db, firebaseAuth } from '../../database/FirebaseConfig.js';
 import firebase from "firebase";
 import MaterialDesignFloatingButtonText from '../../components/buttons/materialDesignFloatingText.js'
 import { Link } from 'react-router-dom';
-
-    const getFeedsOfUser = (userId, setFeeds) =>{
-            db.collection("feeds").where("members", 'array-contains', userId).onSnapshot(
-                function(querySnapshot) {
-                    let feed =[];
-                    querySnapshot.forEach(function(doc) {
-                        feed.push(doc);
-                    });
-                    console.log(feed);
-                    setFeeds(feed);
-                })
-    }
-
+import getFeedsOfUser from '../../functions/getFeedsOfUser';
 
 
 
