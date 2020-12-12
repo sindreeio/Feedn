@@ -7,7 +7,7 @@ function MaterialDesignFloatingButtonText(props){
     
 
     return(
-        <div className="bottom_left-corner ">
+        
                 <div className="inner_bottom">
                 <Link to={props.to}>
                 <button class="mdc-fab mdc-fab--extended">
@@ -16,7 +16,6 @@ function MaterialDesignFloatingButtonText(props){
                     <span class="mdc-fab__label">{props.text}</span>
                 </button></Link>
                 </div>
-            </div>
     )
 }
 

@@ -7,17 +7,14 @@ import '../../pages/authentication/login.css';
 import StandardButton from '../../components/buttons/customButtons/standardButton.js';
 import {db, firebaseAuth, storage} from '../../database/FirebaseConfig';
 import {Link} from 'react-router-dom';
-
-
-function uploadImage(){
-    
-}
+import uploadImage from '../../functions/uploadImage';
 
 
 
 function CreateFeed(){
     const [name, setName] = useState("");
-    const [userID, setUID] = useState("")
+    const [userID, setUID] = useState("");
+    const [selectedFile, setSelectedFile] = useState(null);
     useEffect(() => {
         firebaseAuth.onAuthStateChanged(function(user) {
             setUID(user.uid)
@@ -43,6 +40,9 @@ function CreateFeed(){
                     }
                 });
             })
+            const storageref = storage.child('feedImages/' + docRef.id);
+            uploadImage(selectedFile, storageref, 100);
+
         })
         .catch(function(error) {
             console.error("Error adding document: ", error);
@@ -59,6 +59,7 @@ function CreateFeed(){
                     <div className="header">Lag ny feed</div>
                     <div className="Content">
                         <img className="group_image" src={Group}></img>
+                        <input type="file"  onChange={(e) => setSelectedFile(e.target.files[0])}></input>
                         <div className="mar">
                             <MaterialDesignField setFunction={setName} label="Navn" type="text" id="name"/>
                         </div>

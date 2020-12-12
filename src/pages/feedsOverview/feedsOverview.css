@@ -19,6 +19,8 @@
     top:0px;
     border-radius: 5px;
     position: fixed;
+    overflow: scroll;
+    overflow-x: hidden;
 
 }
 .grid{
