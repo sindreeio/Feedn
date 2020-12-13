@@ -41,7 +41,7 @@ function CreateFeed(){
                 });
             })
             const storageref = storage.child('feedImages/' + docRef.id);
-            uploadImage(selectedFile, storageref, 100);
+            uploadImage(selectedFile, storageref, 400);
 
         })
         .catch(function(error) {
