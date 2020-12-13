@@ -21,9 +21,9 @@ function MaterialDesignCard(props){
     })
 
     return(
-        <div>
+        <div className="margin">
             <Link className="remove_link_style" to={`/feeds/${props.id}`}>
-                <div className="margin mdc-card mdc-card--outlined" >
+                <div className=" mdc-card mdc-card--outlined" >
                     <div className="mdc-card__primary-action" tabindex="0">
                         <div className="my-card__media mdc-card__media mdc-card__media--16-9">
                             <div className="mdc-card__media-content">

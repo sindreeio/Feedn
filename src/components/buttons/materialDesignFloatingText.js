@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MaterialDesignCard from '../cards/materialDesignCard';
+import '../cards/cards.css'
 
 
 function MaterialDesignFloatingButtonText(props){
@@ -9,7 +9,7 @@ function MaterialDesignFloatingButtonText(props){
     return(
         
                 <div className="inner_bottom">
-                <Link to={props.to}>
+                <Link className="remove_link_style" to={props.to}>
                 <button class="mdc-fab mdc-fab--extended">
                     <div class="mdc-fab__ripple"></div>
                     <span class="material-icons mdc-fab__icon">add</span>
