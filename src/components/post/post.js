@@ -7,11 +7,15 @@ import GetUser from '../../functions/authenication/getUser.js';
 import {getPosts} from '../../functions/server/getPosts.js';
 import empty_user from '../../media/img/logo.png';
 import './post.css';
+import Image from './image.js';
+import Text from './text.js';
 
 function Post(props) {
+    
     return (
         <div>
-            
+            {props.data.url ? <Image url={props.data.url}></Image> : null}
+            {props.data.text ? <Text text={props.data.text}></Text> : null}
         </div>
     )
 }

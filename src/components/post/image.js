@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../../media/img/logo.png'
-import {storage} from '../../database/FirebaseConfig.js'
+import {storage} from '../../database/FirebaseConfig'
 import './post.css'
 
 function Image(props) {
     const [img,setImg] = useState(logo);
     useEffect(()=> {
-        storage.child('postImages/' + props.feedId + '/' + props.postId).getDownloadURL().then((uri) =>{
+        storage.child(props.url).getDownloadURL().then((uri) =>{
             console.log("img found");
             setImg(uri)
         }
