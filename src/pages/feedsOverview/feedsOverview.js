@@ -31,12 +31,12 @@ function FeedOverview(){
         ));
 
     return(
-        <div>   
+        <div>  
             <Navbar/>
-            <div className="center">
+            <div className="center_div">
                 <div className="feeds_container">
                     <div className="header">Dine feeder</div>
-                    <div className="center">
+                    <div className="center_div">
                         <div className="grid">
                             {feedsCards}
                         </div>
