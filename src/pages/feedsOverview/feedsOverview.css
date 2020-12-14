@@ -47,6 +47,10 @@
 .button_width{
     width: 200px;
 }
+.button_size{
+    width: 110px;
+    margin-left:10px ;
+}
 
 @media screen and (max-width: 600px) {
     .feeds_container {
