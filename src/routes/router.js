@@ -5,6 +5,7 @@ import Register from '../pages/authentication/register.js';
 import Feed from '../pages/feed/feed.js';
 import FeedOverview from '../pages/feedsOverview/feedsOverview.js';
 import CreateFeed from '../pages/feedsOverview/createFeed.js';
+import CreatePost from '../pages/feed/createPost.js';
 
 function Router(){
     return(
@@ -24,6 +25,9 @@ function Router(){
                 </Route>
                 <Route exact path="/createFeed">
                     <CreateFeed/>
+                </Route>
+                <Route exact path="/feeds/:feedId/createPost">
+                    <CreatePost/>
                 </Route>
             </Switch>
         </BrowserRouter>

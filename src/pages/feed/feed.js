@@ -4,6 +4,7 @@ import './feed.css';
 import {firebaseAuth} from '../../database/FirebaseConfig';
 import Navbar from '../../components/navbar/navbar.js';
 import {Redirect, useParams} from 'react-router-dom';
+import MaterialDesignFAB from '../../components/buttons/materialDesignFAB.js'
 import GetUser from '../../functions/authenication/getUser.js';
 import {getPosts} from '../../functions/server/getPosts.js';
 import Post from '../../components/post/post.js'
@@ -46,6 +47,7 @@ function Feed(){
                     {postComponents}
                 </div>
             </div>
+            <MaterialDesignFAB to={`/feeds/${id}/createPost`}/>
         </div>
     )
 }
