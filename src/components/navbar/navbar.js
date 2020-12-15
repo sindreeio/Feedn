@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Btn from '../../components/buttons/materialDesignFilledButton';
-import {db, firebaseAuth, storage} from '../../database/FirebaseConfig';
+import {db, firebaseAuth, storage, messaging} from '../../database/FirebaseConfig';
 import {Redirect, useHistory} from 'react-router-dom';
 import './navbar.css';
 import empty_user from '../../media/img/empty_user.png';
@@ -34,6 +34,17 @@ function Navbar(props){
             //storage logic here
         }
         }
+
+        messaging.requestPermission()
+        .then(async function() {
+          const token = await messaging.getToken();
+          db.collection("users").doc(user.uid).update({token:token});
+        })
+        .catch(function(err) {
+          console.log("Unable to get permission to notify.", err);
+        });
+        navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
+        
     })
 
 
