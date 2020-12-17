@@ -54,7 +54,7 @@ function CreateFeed(){
     return(
         <div>
             <Navbar/>
-             <div className="center">
+             <div className="center_div">
                 <div className="feeds_container">
                     <div className="header">Lag ny feed</div>
                     <div className="Content">

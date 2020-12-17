@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Btn from '../../components/buttons/materialDesignFilledButton';
-import {firebaseAuth} from '../../database/FirebaseConfig';
-import Navbar from '../../components/navbar/navbar.js';
-import {Redirect, useParams} from 'react-router-dom';
-import GetUser from '../../functions/authenication/getUser.js';
-import {getPosts} from '../../functions/server/getPosts.js';
-import empty_user from '../../media/img/logo.png';
 import './post.css';
 import Image from './image.js';
 import Text from './text.js';
+import ReactionButton from "../buttons/reactionButton/reactionButton.js";
 
 function Post(props) {
     
@@ -16,6 +10,20 @@ function Post(props) {
         <div>
             {props.data.url ? <Image url={props.data.url}></Image> : null}
             {props.data.text ? <Text text={props.data.text}></Text> : null}
+            <div className="reactionBox">
+                <div className="btn">
+                <ReactionButton reaction="Dagens" userId={props.userId} feed={props.feedId} post={props.postId}/>
+                </div>
+                <div className="btn">
+                <ReactionButton reaction="Enig" userId={props.userId} feed={props.feedId} post={props.postId}/>
+                </div>
+                <div className="btn">
+                <ReactionButton reaction="Ugøy" userId={props.userId} feed={props.feedId} post={props.postId}/>
+                </div>
+                <div className="btn">
+                <ReactionButton reaction="Crazycallback" userId={props.userId} feed={props.feedId} post={props.postId}/>
+                </div>
+            </div>
         </div>
     )
 }

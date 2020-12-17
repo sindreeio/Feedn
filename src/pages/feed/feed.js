@@ -32,7 +32,7 @@ function Feed(){
     if (posts) {
         postComponents = posts.map((post) => (
             <div className="f_post_containter">
-                <Post key={post.id} data={post} userId={userID} feedId={id}></Post>
+                <Post key={post.id} postId={post.id} data={post.data()} userId={userID} feedId={id}></Post>
             </div>
         ));
     } else {
