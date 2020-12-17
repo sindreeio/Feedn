@@ -14,7 +14,7 @@ function Button(props){
     else{
         return(
             <div class="standardButton" onClick={props.action}>
-            <div>{props.text}</div> <div>{toString(props.number)}</div>
+            <div>{props.text}</div> {(props.number > 0)  ? <div>{props.number}</div> : null }
             </div>
         )
     }

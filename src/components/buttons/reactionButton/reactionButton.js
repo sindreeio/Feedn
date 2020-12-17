@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {db} from '../../../database/FirebaseConfig.js';
-import StandardButton from '../customButtons/standardButton.js';
 import Button from './button.js'
 
 

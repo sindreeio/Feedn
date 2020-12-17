@@ -10,7 +10,20 @@ function Post(props) {
         <div>
             {props.data.url ? <Image url={props.data.url}></Image> : null}
             {props.data.text ? <Text text={props.data.text}></Text> : null}
-            <ReactionButton reaction="Dagens" userId={props.userId} feed={props.feedId} post={props.postId}/>
+            <div className="reactionBox">
+                <div className="btn">
+                <ReactionButton reaction="Dagens" userId={props.userId} feed={props.feedId} post={props.postId}/>
+                </div>
+                <div className="btn">
+                <ReactionButton reaction="Enig" userId={props.userId} feed={props.feedId} post={props.postId}/>
+                </div>
+                <div className="btn">
+                <ReactionButton reaction="Ugøy" userId={props.userId} feed={props.feedId} post={props.postId}/>
+                </div>
+                <div className="btn">
+                <ReactionButton reaction="Crazycallback" userId={props.userId} feed={props.feedId} post={props.postId}/>
+                </div>
+            </div>
         </div>
     )
 }

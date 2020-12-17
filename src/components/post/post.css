@@ -18,3 +18,12 @@
     margin-top: 5px;
     padding: 5px;
 }
+
+.reactionBox{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn{
+    width: 24%;
+}
