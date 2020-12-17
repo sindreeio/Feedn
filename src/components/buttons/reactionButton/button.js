@@ -4,7 +4,7 @@ import '../customButtons/standardButton.css';
 
 function Button(props){
 
-    if(reacted){
+    if(props.reacted){
         return(
             <div class="standardButton" style={{backgroundColor: '#1ABDA5', color:' #eeeeee'}} onClick={props.action}>
             {props.text} {props.number}
@@ -14,7 +14,7 @@ function Button(props){
     else{
         return(
             <div class="standardButton" onClick={props.action}>
-            {props.text} {props.number}
+            <div>{props.text}</div> <div>{toString(props.number)}</div>
             </div>
         )
     }

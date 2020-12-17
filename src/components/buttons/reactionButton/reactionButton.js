@@ -14,10 +14,8 @@ function ReactionButton(props){
                 reacted.push(e.data().userId);
             })
             setHasReacted(reacted);
-        }).catch((e)=>{
-            console.log(e);
         })
-    })
+    },[])
 
     const submit = () =>{
         if(hasReacted.includes(props.userId)){
@@ -30,7 +28,9 @@ function ReactionButton(props){
 
     return(
         <div>
-            {hasReacted.includes(props.userId) ? <Button reacted={true} text={props.reaction} action={submit}/> : <StandardButton reacted={false} text={props.reaction} action={submit}/>}
+            {hasReacted.includes(props.userId) ? <Button reacted={true} text={props.reaction} action={submit} number={hasReacted.length}/> : <Button reacted={false} text={props.reaction} action={submit}  number={hasReacted.length}/>}
         </div>
     )
 }
+
+export default ReactionButton;

@@ -1,5 +1,4 @@
-import React from 'react';
-import { db, firebaseAuth } from '../../database/FirebaseConfig.js';
+import { db } from '../../database/FirebaseConfig.js';
 
 export const getPosts = (feedId, setPosts) => {
     console.log(feedId);
@@ -7,7 +6,7 @@ export const getPosts = (feedId, setPosts) => {
         function(querySnapshot) {
             let posts =[];
             querySnapshot.forEach(function(doc) {
-                posts.push(doc.data());
+                posts.push(doc);
             });
             setPosts(posts);
         })
