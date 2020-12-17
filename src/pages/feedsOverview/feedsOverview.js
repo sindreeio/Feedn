@@ -40,7 +40,7 @@ function FeedOverview(){
             <div className="center_div">
                 <div className="feeds_container">
                     <div className="header">Dine feeder</div>
-                    <div className="center_div">
+                    <div className="center_div little_margin">
                         <MaterialDesignField setFunction={setCode} label="Skriv inn kode" type="text" id="code"/>
                         <div className="button_size"><CustomButton text="Bli med i feed" action={submit}/></div>
                     </div>
