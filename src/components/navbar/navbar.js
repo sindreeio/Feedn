@@ -6,6 +6,7 @@ import './navbar.css';
 import empty_user from '../../media/img/empty_user.png';
 import ProfileMenu from './ProfileMenu';
 import logo from '../../media/img/logo.png';
+import {askForPermissioToReceiveNotifications} from '../../functions/notifications/push';
 
 
 
@@ -25,25 +26,18 @@ function Navbar(props){
         let imgPath = ""
 
         if(user){
-        const snapshot = db.collection("users").doc(user.uid).onSnapshot(
-            function(doc){
-                imgPath = doc.data().profile_img_path;
+            const snapshot = db.collection("users").doc(user.uid).onSnapshot(
+                function(doc){
+                    imgPath = doc.data().profile_img_path;
+                }
+            )
+            if(!((imgPath === ""))){
+                //storage logic here
             }
-        )
-        if(!((imgPath === ""))){
-            //storage logic here
         }
+        if(user) {
+            askForPermissioToReceiveNotifications(user.uid);
         }
-
-        messaging.requestPermission()
-        .then(async function() {
-          const token = await messaging.getToken();
-          db.collection("users").doc(user.uid).update({token:token});
-        })
-        .catch(function(err) {
-          console.log("Unable to get permission to notify.", err);
-        });
-        navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
         
     })
 
