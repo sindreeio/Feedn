@@ -37,9 +37,9 @@
 
 .profile_menu{
     width: 200px;
-    background-color: white;
+    background-color: #e2e2e2;
     height: fit-content;
-    margin-right: 5px;
+    margin-right: 15px;
     position: absolute;
     margin-top: 50px;
     font-family: 'Exo', sans-serif;
@@ -51,11 +51,11 @@
     content: "";
     position: absolute;
     bottom: 100%;
-    left: 90%;
+    left: 95%;
     margin-left: -10px;
     border-width: 10px;
     border-style: solid;
-    border-color: transparent transparent white transparent;
+    border-color: transparent transparent #e2e2e2 transparent;
   }
 .align_right_container{
     display: flex;
