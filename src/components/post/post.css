@@ -23,7 +23,40 @@
     display: flex;
     justify-content: space-around;
 }
+.field{
+    width: 100%;
+    margin: 5px;
+    margin-right: 10px;
+
+    font-family: 'Exo', sans-serif;
+
+}
 
 .btn{
     width: 24%;
+}
+
+.heightLimit{
+    height: 40px;
+}
+.flex{
+    display: flex;
+    justify-items: start;
+    align-items: center;
+    font-family: 'Exo', sans-serif;
+
+}
+
+.comments_collapsed{
+    max-height: 35px;
+    overflow: hidden;
+}
+
+.comments_expanded{
+    height: fit-content;
+
+}
+
+.text_margin{
+    margin-right: 10px;
 }
