@@ -11,8 +11,9 @@ import Comment from "./comment";
 function Post(props) {
     const [comments,setComments] = useState([]);
     const [collapsed, setCollapsed] = useState(true);
+    const [hasCollapsed, setHasCollapsed] = useState(true);
     useEffect(() => {
-        const unsubscribe = db.collection("feeds").doc(props.feedId).collection("posts").doc(props.postId).collection("comments").orderBy('timestamp','desc').onSnapshot(     
+        const unsubscribe = db.collection("feeds").doc(props.feedId).collection("posts").doc(props.postId).collection("comments").orderBy('timestamp','desc').limit(1).get().then(     
             function(snapshot){
                 let commentist = [];
                 snapshot.forEach(element => {
@@ -22,10 +23,25 @@ function Post(props) {
             }
         )
         return () => {
-            unsubscribe();
           }
 
     },[])
+
+    const collapser = () =>{
+        setCollapsed(!collapsed);
+        if (hasCollapsed){
+        const unsubscribe = db.collection("feeds").doc(props.feedId).collection("posts").doc(props.postId).collection("comments").orderBy('timestamp','desc').onSnapshot(     
+            function(snapshot){
+                let commentist = [];
+                snapshot.forEach(element => {
+                    commentist.push(element);
+                });
+                setComments(commentist);
+            }
+        )
+        setHasCollapsed(false);
+        }
+    }
 
     const commentList = comments.map((com) => (
         <div>
@@ -57,7 +73,7 @@ function Post(props) {
             <div className={collapsed ? "comments_collapsed": "comments_expanded"}>
             {commentList}
             </div>
-            <div onClick={() => setCollapsed(!collapsed)}>{collapsed ? <div>Se flere kommentarer</div> : <div>Se færre kommentarer</div> }</div>
+            <div onClick={() => collapser()}>{collapsed ? <div>Se flere kommentarer</div> : <div>Se færre kommentarer</div> }</div>
         </div>
     )
 }
