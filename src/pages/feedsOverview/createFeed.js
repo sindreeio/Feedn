@@ -31,11 +31,11 @@ function CreateFeed(){
                 return transaction.get(ref).then(doc => {
                     if (!doc.data().member_of) {
                         transaction.set({
-                            member_of: [docRef.id]
+                            member_of: [{id: docRef.id, name: name}]
                         });
                     } else {
                         const member_of = doc.data().member_of;
-                        member_of.push(docRef.id);
+                        member_of.push({id: docRef.id, name: name});
                         transaction.update(ref, { member_of });
                     }
                 });

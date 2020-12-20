@@ -1,0 +1,6 @@
+.chips {
+    display: flex;
+    flex: 0 0 auto;
+    width: auto;
+    height: 48px;
+}
