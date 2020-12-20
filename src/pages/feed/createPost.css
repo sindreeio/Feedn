@@ -1,0 +1,78 @@
+.cp_center{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    
+}
+
+.cp_content{
+    display: flex;
+    align-items:flex-start;
+    flex-direction: column;
+    width: 96vw;
+    height: 100vh;
+    max-width: 1000px;
+    margin-top: 51px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-radius: 5px;
+    
+
+}
+
+.cp_chip_containter{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: scroll;
+    width: auto;
+    height: 60px;
+
+}
+
+.cp_input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 30vh;
+
+}
+
+.cp_input_attriute{
+    -webkit-appearance: none;
+    font-family: exo, sans-serif;
+    font-size: large;
+    resize: none;
+    outline: none;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    width: 90%;
+    height: 100%;
+    border-color: gray;
+    border-radius: 5px;
+    border-width: 0.5px;
+    
+}
+
+.cp_button{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2px;
+}
+
+.cp_header{
+    font-family: 'Exo', sans-serif;
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+    margin-top: 200px;
+    font-weight: bold;
+}
