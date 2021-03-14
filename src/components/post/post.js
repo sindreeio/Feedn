@@ -4,16 +4,39 @@ import Image from './image.js';
 import Text from './text.js';
 import ReactionButton from "../buttons/reactionButton/reactionButton.js";
 import AddComment from "./addComment.js";
-import { db } from '../../database/FirebaseConfig.js';
+import { db, storage } from '../../database/FirebaseConfig.js';
 import Comment from "./comment";
+import empty_user from '../../media/img/empty_user.png';
+import '../navbar/navbar.css';
+
 
 
 function Post(props) {
     const [comments,setComments] = useState([]);
     const [collapsed, setCollapsed] = useState(true);
     const [hasCollapsed, setHasCollapsed] = useState(true);
+    const [profilePicture, setProfilePicture] = useState(empty_user);
+    const [firstName, setFirstName] = useState(null);
+    const [lastName, setLastName] = useState(null);
+
+
+    let unsubscribe;
     useEffect(() => {
-        const unsubscribe = db.collection("feeds").doc(props.feedId).collection("posts").doc(props.postId).collection("comments").orderBy('timestamp','desc').limit(1).get().then(     
+        storage.child('profilePictures/' + props.data.owner).getDownloadURL().then((uri) =>{
+            console.log("img found");
+            setProfilePicture(uri)
+        }
+
+        ).catch((e)=>{
+        });
+        db.collection("users").doc(props.data.owner).get().then((user) =>{
+            if (user){
+                setFirstName(user.data().first_name);
+                setLastName(user.data().last_name)
+
+            }
+        })
+        db.collection("feeds").doc(props.feedId).collection("posts").doc(props.postId).collection("comments").orderBy('timestamp','desc').limit(1).get().then(     
             function(snapshot){
                 let commentist = [];
                 snapshot.forEach(element => {
@@ -22,15 +45,14 @@ function Post(props) {
                 setComments(commentist);
             }
         )
-        return () => {
-          }
+        return unsubscribe; 
 
     },[])
-
+    
     const collapser = () =>{
         setCollapsed(!collapsed);
         if (hasCollapsed){
-        const unsubscribe = db.collection("feeds").doc(props.feedId).collection("posts").doc(props.postId).collection("comments").orderBy('timestamp','desc').onSnapshot(     
+            unsubscribe = db.collection("feeds").doc(props.feedId).collection("posts").doc(props.postId).collection("comments").orderBy('timestamp','desc').onSnapshot(     
             function(snapshot){
                 let commentist = [];
                 snapshot.forEach(element => {
@@ -52,7 +74,15 @@ function Post(props) {
 
     
     return (
-        <div>
+        <div className="post">
+            <div className="header_container">
+            <div className="profile_picture_container">
+                <img className="profile_img" src={profilePicture}></img>
+            </div>
+            <div className="header_text">
+                {firstName} {lastName}
+            </div>
+            </div>
             {props.data.url ? <Image url={props.data.url}></Image> : null}
             {props.data.text ? <Text text={props.data.text}></Text> : null}
             <div className="reactionBox">
@@ -73,7 +103,7 @@ function Post(props) {
             <div className={collapsed ? "comments_collapsed": "comments_expanded"}>
             {commentList}
             </div>
-            <div onClick={() => collapser()}>{collapsed ? <div>Se flere kommentarer</div> : <div>Se færre kommentarer</div> }</div>
+            <div className="collapser" onClick={() => collapser()}>{collapsed ? <div>Se flere kommentarer</div> : <div>Se færre kommentarer</div> }</div>
         </div>
     )
 }

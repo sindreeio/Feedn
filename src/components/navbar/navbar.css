@@ -9,6 +9,7 @@
     justify-content: space-between;
     margin-bottom: 20px;
     align-items: center;
+    z-index: 900;
 }
 
 .logo{
@@ -25,6 +26,7 @@
     width: 30px;
     height: 30px;
     padding-right: 10px;
+    object-fit:cover;
 }
 
 .feedn_logo{
@@ -39,12 +41,12 @@
     width: 200px;
     background-color: #e2e2e2;
     height: fit-content;
-    margin-right: 15px;
+    margin-right: 13px;
     position: absolute;
     margin-top: 50px;
     font-family: 'Exo', sans-serif;
     z-index: 1000;
-
+    
 
 }
 .profile_menu::after {
@@ -59,20 +61,22 @@
   }
 .align_right_container{
     display: flex;
-    justify-content: right;
+
+    justify-content:flex-end;
     
 }
 
 .profile_img_big{
     width: 50px;
     height: 50px;
+    object-fit:cover;
 }
 
 .center_content_container{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 70px;
 }
 
 .back_icon{
@@ -83,3 +87,4 @@
 .flex{
     display: flex;
 }
+

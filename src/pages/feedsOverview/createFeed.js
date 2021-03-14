@@ -58,8 +58,11 @@ function CreateFeed(){
                 <div className="feeds_container">
                     <div className="header">Lag ny feed</div>
                     <div className="Content">
-                        <img className="group_image" src={Group}></img>
-                        <input type="file"  onChange={(e) => setSelectedFile(e.target.files[0])}></input>
+                    {selectedFile ? <img className="group_image" src={URL.createObjectURL(selectedFile)}></img> : <img className="group_image" src={Group}></img>}
+                    <div class="file-input">
+                        <label class ="new-button" for="input">Last opp feedbilde</label>
+                        <input id="input" className="file" type="file"  onChange={(e) => setSelectedFile(e.target.files[0])}></input>
+                        </div>
                         <div className="mar">
                             <MaterialDesignField setFunction={setName} label="Navn" type="text" id="name"/>
                         </div>
