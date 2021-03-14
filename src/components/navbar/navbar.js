@@ -26,20 +26,20 @@ function Navbar(props){
         let imgPath = ""
 
         if(user){
-            const snapshot = db.collection("users").doc(user.uid).onSnapshot(
-                function(doc){
-                    imgPath = doc.data().profile_img_path;
-                }
+            storage.child('profilePictures/' + user.uid).getDownloadURL().then((uri) =>{
+                console.log("img found");
+                setProfilePicture(uri);
+            }
             )
             if(!((imgPath === ""))){
                 //storage logic here
             }
         }
-        if(user) {
+        if(user && !(window.navigator.platform == "iPhone")) {
             askForPermissioToReceiveNotifications(user.uid);
         }
         
-    })
+    }, [user])
 
 
     const handleImageClick= () =>{
@@ -54,7 +54,7 @@ function Navbar(props){
     let history = useHistory();
 
     return(
-        <div>
+        <div className="align_right_container">
             <div className="nav-container">
                 {doRedirectToLogin ? <Redirect to="/"/> : null}
                 <div className="back_icon" onClick={() => history.goBack()}>
@@ -70,7 +70,7 @@ function Navbar(props){
                 </div>
                 
             </div>
-            {displayProfileMenu && <ProfileMenu profilePicture={profilePicture}/>}
+            {displayProfileMenu && <ProfileMenu user={user} profilePicture={profilePicture}/>}
         </div>
     )
 }
